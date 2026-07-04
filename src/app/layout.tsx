@@ -4,7 +4,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { NewsMarquee } from "@/components/layout/NewsMarquee";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
-import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,7 +38,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased min-h-screen flex flex-col`}>
         <Navbar />
         <NewsMarquee />
-        <main className="flex-1">
+        <main className="flex-1 pt-[144px]">
           {children}
         </main>
         <Footer />

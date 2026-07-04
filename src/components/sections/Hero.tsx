@@ -1,24 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Zap, Play } from "lucide-react";
+import { ArrowRight, Zap, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+const heroSlides = [
+  { src: "/images/bess/1.jpg", alt: "BESS Energy Storage System" },
+  { src: "/images/bess/4.jpg", alt: "Industrial Power Electronics" },
+  { src: "/images/bess/5.jpg", alt: "Smart Manufacturing Hub" },
+  { src: "/images/bess/6.jpg", alt: "SMPS Engineering Solutions" },
+];
 
 export function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goToSlide = (index: number) => {
+    setDirection(index > currentSlide ? 1 : -1);
+    setCurrentSlide(index);
+  };
+
   return (
     <section className="relative min-h-[90vh] w-full flex flex-col justify-center overflow-hidden bg-[#0A1128]">
-      {/* Dynamic Background */}
+      {/* Dynamic Background Carousel */}
       <div className="absolute inset-0 z-0">
-        <Image 
-          src="/images/bess/1.jpg"
-          alt="SMPS Engineering"
-          fill
-          className="object-cover opacity-30 mix-blend-overlay"
-          priority
-        />
+        <AnimatePresence mode="sync" initial={false}>
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={heroSlides[currentSlide].src}
+              alt={heroSlides[currentSlide].alt}
+              fill
+              className="object-cover opacity-30 mix-blend-overlay"
+              priority
+            />
+          </motion.div>
+        </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1128]/80 via-[#0A1128]/95 to-[#0A1128] z-10" />
         
         {/* Animated Glow Orbs */}
@@ -34,7 +69,8 @@ export function Hero() {
         />
       </div>
 
-      <div className="container relative z-20 mx-auto px-4 lg:px-8 max-w-[1440px] pt-40">
+
+      <div className="container relative z-20 mx-auto px-4 lg:px-8 max-w-[1440px] pt-16 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <div className="max-w-3xl">
             <motion.div
@@ -153,8 +189,25 @@ export function Hero() {
         </div>
       </motion.div>
       
+      {/* Carousel Dots */}
+      <div className="absolute bottom-28 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+        {heroSlides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goToSlide(i)}
+            className={`rounded-full transition-all duration-300 ${
+              i === currentSlide
+                ? "w-8 h-2.5 bg-[#F26522]"
+                : "w-2.5 h-2.5 bg-white/30 hover:bg-white/60"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
       {/* Bottom fade into next section */}
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-20" />
+
     </section>
   );
 }

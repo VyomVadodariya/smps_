@@ -1,11 +1,20 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Settings2, Activity } from "lucide-react";
+import { ArrowRight, Settings2, Activity, Battery, Sun, Car, ShieldAlert, Zap, Box } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+const productGrid = [
+  { icon: Battery, title: "BESS & Smart Energy", sub: "5kW – 5MW", href: "/products/bess", color: "text-primary" },
+  { icon: Zap, title: "Hybrid SMPS Units", sub: "Multi-port AC/DC", href: "/products/smps", color: "text-[#F26522]" },
+  { icon: Sun, title: "Solar Solutions", sub: "MPPT Chargers & Inverters", href: "/products/solar", color: "text-yellow-500" },
+  { icon: Car, title: "EV Charging Stations", sub: "2W to Heavy Vehicle", href: "/products/ev", color: "text-cyan-500" },
+  { icon: Box, title: "Storage Batteries", sub: "Lead Acid, Li-Ion, LiFePO4", href: "/products/batteries", color: "text-emerald-500" },
+  { icon: ShieldAlert, title: "Surge Protection", sub: "Single/Three Phase SPD", href: "/products/protection", color: "text-rose-500" },
+];
 
 const featuredProducts = [
   {
@@ -50,6 +59,33 @@ export function ProductsHub() {
           </Link>
         </div>
 
+        {/* Product Grid Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
+          {productGrid.map((product, i) => (
+            <motion.div
+              key={product.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07 }}
+            >
+              <Link
+                href={product.href}
+                className="group flex flex-col items-center gap-3 p-5 bg-white rounded-2xl border border-border hover:border-primary/40 hover:shadow-md transition-all duration-300 text-center h-full"
+              >
+                <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <product.icon className={`w-6 h-6 ${product.color}`} />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-foreground leading-tight">{product.title}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{product.sub}</p>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Featured Products — Alternating Layout */}
         <div className="flex flex-col gap-12 lg:gap-24">
           {featuredProducts.map((product, index) => (
             <div 
@@ -73,7 +109,7 @@ export function ProductsHub() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#0A1128]/60 to-transparent mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </motion.div>
 
-              {/* Product Details (Engineering Feel) */}
+              {/* Product Details */}
               <motion.div 
                 initial={{ opacity: 0, x: index % 2 === 0 ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}

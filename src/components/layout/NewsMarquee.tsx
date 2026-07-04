@@ -13,7 +13,7 @@ const ANNOUNCEMENTS = [
 
 export function NewsMarquee() {
   return (
-    <div className="absolute top-[96px] left-0 w-full bg-[#0A1128]/90 backdrop-blur border-y border-white/10 flex items-center overflow-hidden h-12 z-40">
+    <div className="fixed top-[96px] left-0 w-full bg-[#0A1128]/90 backdrop-blur border-y border-white/10 flex items-center overflow-hidden h-12 z-40">
       
       {/* Label Box */}
       <div className="absolute left-0 top-0 bottom-0 z-10 bg-[#F26522] flex items-center px-4 md:px-6 shadow-[10px_0_20px_-5px_rgba(10,17,40,1)]">
