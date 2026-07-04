@@ -37,7 +37,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-slate-400 leading-snug mt-1 max-w-sm text-sm">
-              Deep-tech startup delivering next-generation technological products and patented SMART HYBRID SMPS for the world's most critical infrastructure.
+              Deep-tech startup delivering next-generation technological products and patented SMART HYBRID SMPS for the world&apos;s most critical infrastructure.
             </p>
             <div className="flex flex-col gap-1 mt-4 text-xs text-slate-300">
               <p className="font-bold text-slate-200">SMPS ELECTRIC CONTROL PRIVATE LIMITED</p>

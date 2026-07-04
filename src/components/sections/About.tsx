@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -82,7 +82,7 @@ export function About() {
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-medium">
-              SMPS Electric Control Private Limited is an eastern India-based deep-tech startup that delivers next-generation technological products for the world's most critical infrastructure. We specialize in patented Smart Hybrid SMPS, Battery Energy Storage Systems (BESS), and turnkey EPC solutions.
+              SMPS Electric Control Private Limited is an eastern India-based deep-tech startup that delivers next-generation technological products for the world&apos;s most critical infrastructure. We specialize in patented Smart Hybrid SMPS, Battery Energy Storage Systems (BESS), and turnkey EPC solutions.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed mb-10">
               Driven by a team of research scholars from IITs and NITs, we operate two state-of-the-art Smart Integrated Power Electronics Manufacturing Hubs — in Odisha and Chennai — delivering solutions for Defense, Telecom, Nuclear, Space, and Renewable Energy sectors.

@@ -25,7 +25,7 @@ export function Capabilities() {
               transition={{ delay: 0.1 }}
               className="text-lg text-muted-foreground leading-relaxed font-medium"
             >
-              To engineer the world's most dependable power electronics, ensuring zero downtime for mission-critical infrastructure globally.
+              To engineer the world&apos;s most dependable power electronics, ensuring zero downtime for mission-critical infrastructure globally.
             </motion.p>
           </div>
           <div className="max-w-xl">

@@ -40,7 +40,7 @@ export default function ManufacturingPage() {
               </div>
               <h2 className="text-4xl font-black text-foreground mb-6">Engineered by IIT & NIT Scholars.</h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Our R&D facility in Bengaluru is dedicated to advancing Smart Grid electronics and patented multi-port AC/DC Hybrid SMPS systems. We don't just assemble; we innovate at the silicon and circuit level.
+                Our R&D facility in Bengaluru is dedicated to advancing Smart Grid electronics and patented multi-port AC/DC Hybrid SMPS systems. We don&apos;t just assemble; we innovate at the silicon and circuit level.
               </p>
               <ul className="flex flex-col gap-4 mb-8">
                 <li className="flex items-center gap-3 font-semibold text-foreground"><ShieldCheck className="w-5 h-5 text-primary" /> ISO 9001:2015 Quality Management</li>
@@ -59,7 +59,7 @@ export default function ManufacturingPage() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8 max-w-[1440px]">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-foreground mb-4">Global Production Hubs</h2>
+            <h2 className="text-4xl font-black text-foreground mb-6">Global Production Hubs</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Strategically located to serve domestic and international infrastructure projects.</p>
           </div>
           
